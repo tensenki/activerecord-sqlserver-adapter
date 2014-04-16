@@ -226,7 +226,8 @@ module ActiveRecord
         initialize_dateformatter
         use_database
         unless (@sqlserver_azure == true || SUPPORTED_VERSIONS.include?(@database_year))
-          raise NotImplementedError, "Currently, only #{SUPPORTED_VERSIONS.to_sentence} are supported. We got back #{@database_version}."
+          # Azure is not being detected, as a quick fix I'm changing the exception to a term comment
+          puts "Currently, only #{SUPPORTED_VERSIONS.to_sentence} are supported. We got back #{@database_version}. Proceed at own risk"
         end
       end
 
